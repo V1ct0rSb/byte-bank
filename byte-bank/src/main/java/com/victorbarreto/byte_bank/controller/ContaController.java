@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.victorbarreto.byte_bank.dto.ContaDTO;
 import com.victorbarreto.byte_bank.dto.DepositoDTO;
+import com.victorbarreto.byte_bank.dto.SaqueDTO;
 import com.victorbarreto.byte_bank.service.ContaService;
 
 @RestController
@@ -17,9 +18,18 @@ public class ContaController {
     @Autowired
     private ContaService contaService;
 
-    @PutMapping("/contas")
+
+
+    @PutMapping("/contas/deposito")
     public ResponseEntity<ContaDTO> deposito(@RequestBody DepositoDTO depositoDTO) {
         ContaDTO contaDTO = contaService.deposito(depositoDTO);
         return ResponseEntity.ok(contaDTO);
+    }
+
+    @PutMapping("/contas/saque")
+    public ResponseEntity<ContaDTO> saque(@RequestBody SaqueDTO saqueDTO) {
+        ContaDTO contaDTO = contaService.saque(saqueDTO);
+        return ResponseEntity.ok(contaDTO);
+
     }
 }

@@ -84,4 +84,14 @@ public class ContaModel {
         return this.saldo;
     }
 
+    public BigDecimal saque(BigDecimal valor) {
+        if (valor.compareTo(this.saldo) <= 0) {
+            this.saldo = this.saldo.subtract(valor);
+        } else {
+            throw new RuntimeException("Valor maior que o saldo!!");
+        }
+
+        return this.saldo;
+    }
+
 }
