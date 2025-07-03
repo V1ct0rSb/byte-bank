@@ -1,7 +1,5 @@
 package com.victorbarreto.byte_bank.controller;
 
-import java.math.BigDecimal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,11 +19,7 @@ public class ContaController {
 
     @PutMapping("/contas")
     public ResponseEntity<ContaDTO> deposito(@RequestBody DepositoDTO depositoDTO) {
-        ContaDTO contaDTO = contaService.deposito(
-                depositoDTO.valor(),
-                depositoDTO.numConta(),
-                depositoDTO.agencia()
-        );
+        ContaDTO contaDTO = contaService.deposito(depositoDTO);
         return ResponseEntity.ok(contaDTO);
     }
 }

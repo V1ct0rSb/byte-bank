@@ -1,6 +1,7 @@
 package com.victorbarreto.byte_bank.dto;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
