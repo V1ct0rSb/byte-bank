@@ -2,6 +2,8 @@ package com.victorbarreto.byte_bank.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +21,6 @@ public class ContaController {
     private ContaService contaService;
 
 
-
     @PutMapping("/contas/deposito")
     public ResponseEntity<ContaDTO> deposito(@RequestBody DepositoDTO depositoDTO) {
         ContaDTO contaDTO = contaService.deposito(depositoDTO);
@@ -31,5 +32,11 @@ public class ContaController {
         ContaDTO contaDTO = contaService.saque(saqueDTO);
         return ResponseEntity.ok(contaDTO);
 
+    }
+
+    @GetMapping("contas/{id}")
+    public ResponseEntity<ContaDTO> exibirContaId(@PathVariable Long id) {
+        ContaDTO contaDTO = contaService.exibirContaId(id);
+        return ResponseEntity.ok().body(contaDTO);
     }
 }

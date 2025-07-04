@@ -47,4 +47,19 @@ public class ContaService {
                 contaSalva.getUsuarioModel().getNome()
         );
     }
+
+    //GET/{ID}
+    public ContaDTO exibirContaId(Long id) {
+        ContaModel contaModel = contaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Id não encontrado"));
+
+
+
+        return new ContaDTO(
+                contaModel.getAgencia(),
+                contaModel.getNumConta(),
+                contaModel.getSaldo(),
+                contaModel.getUsuarioModel().getNome()
+        );
+    }
 }
